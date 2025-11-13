@@ -29,7 +29,9 @@ function gerarOpcoesHorarios() {
     "05/12 Sexta-feira - Manhã", "05/12 Sexta-feira - Tarde", "05/12 Sexta-feira - noite",
     "06/12 Sábado - Manhã", "06/12 Sábado  - Tarde"
   ];
-  return horarios.map(h => `<div class="schedule-option" onclick="selecionarHorario(this)">${h}</div>`).join("");
+  return horarios
+    .map(h => `<div class="schedule-option" onclick="selecionarHorario(this)">${h}</div>`)
+    .join("");
 }
 
 function toggleGrade(btn) {
@@ -95,6 +97,7 @@ function enviarFormulario() {
 
   const URL_API = "https://script.google.com/macros/s/AKfycbzv-xTvykCA08jG55EaZK97bZ_YoIMeKfwKpQg1E5eDX29XEdCVEQqyBNzQvnrPgNYP/exec";
 
+  // Verifica se RA já tem agendamento
   fetch(`${URL_API}?ra=${ra}`)
     .then(res => res.json())
     .then(data => {
@@ -117,6 +120,7 @@ function enviarFormulario() {
         return;
       }
 
+      // Envia agendamento (POST)
       fetch(URL_API, {
         method: "POST",
         mode: "no-cors",
@@ -254,14 +258,13 @@ async function carregarHorariosLotados() {
   }
 }
 
+// ===================== INICIALIZAÇÃO GERAL (DOM CONTENT LOADED) =====================
+
 document.addEventListener("DOMContentLoaded", async () => {
+  // 1) Carrega contagem de horários (se você quiser usar depois para bloquear lotados)
   await carregarHorariosLotados();
-  // Se houver função para criar grade, chame aqui
-});
 
-// ===================== POPUP INICIAL REGULAR x SUBSTITUTIVA =====================
-
-document.addEventListener("DOMContentLoaded", () => {
+  // 2) Lógica do POPUP REGULAR x SUBSTITUTIVA + BANNER
   const popup = document.getElementById("popup-inicial");
   if (!popup) return;
 
@@ -272,16 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Link da prova REGULAR
   const URL_PROVA_REGULAR = "https://pimdireto.github.io/AgendamentoUNIPBC/";
-
-  // Verifica se já existe uma escolha salva
-  const escolhaSalva = localStorage.getItem("tipoSemanaAgendamento");
-
-  // Se o aluno já confirmou SUBSTITUTIVA antes, não mostra popup de novo
-  if (escolhaSalva === "substitutiva") {
-    popup.style.display = "none";
-    mostrarBanner("substitutiva");
-    return;
-  }
 
   // Função pra mostrar o banner bonitinho
   function mostrarBanner(tipo) {
@@ -299,10 +292,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Verifica se já existe uma escolha salva
+  const escolhaSalva = localStorage.getItem("tipoSemanaAgendamento");
+
+  // Se o aluno já confirmou SUBSTITUTIVA antes, não mostra popup de novo
+  if (escolhaSalva === "substitutiva") {
+    popup.style.display = "none";
+    mostrarBanner("substitutiva");
+  }
+
   // REGULAR → redireciona para a página de agendamento regular
   btnRegular.addEventListener("click", () => {
-    // Se quiser salvar a escolha de REGULAR também, descomente:
-    // localStorage.setItem("tipoSemanaAgendamento", "regular");
     window.location.href = URL_PROVA_REGULAR;
   });
 
@@ -313,12 +313,3 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarBanner("substitutiva");
   });
 });
-
-
-
-
-
-
-
-
-
