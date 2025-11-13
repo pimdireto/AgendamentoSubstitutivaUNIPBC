@@ -405,7 +405,7 @@ button[onclick="fecharConsulta()"] {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
-  display: flex;
+  display: none;              /* << AQUI: começa escondido */
   align-items: center;
   justify-content: center;
   z-index: 9999;
@@ -457,3 +457,4 @@ button[onclick="fecharConsulta()"] {
   background-color: #28a745;
   color: #fff;
 }
+
