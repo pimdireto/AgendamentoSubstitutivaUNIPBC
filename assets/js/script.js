@@ -292,14 +292,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // Verifica se já existe uma escolha salva
-  const escolhaSalva = localStorage.getItem("tipoSemanaAgendamento");
+ // Verifica se já existe uma escolha salva
+const escolhaSalva = localStorage.getItem("tipoSemanaAgendamento");
 
-  // Se o aluno já confirmou SUBSTITUTIVA antes, não mostra popup de novo
-  if (escolhaSalva === "substitutiva") {
-    popup.style.display = "none";
-    mostrarBanner("substitutiva");
-  }
+if (escolhaSalva === "substitutiva") {
+  // Já escolheu SUBSTITUTIVA antes → não mostra popup, só o banner
+  mostrarBanner("substitutiva");
+} else {
+  // Primeira vez (ou sem escolha salva) → mostra o popup
+  popup.style.display = "flex";
+}
 
   // REGULAR → redireciona para a página de agendamento regular
   btnRegular.addEventListener("click", () => {
@@ -313,3 +315,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     mostrarBanner("substitutiva");
   });
 });
+
