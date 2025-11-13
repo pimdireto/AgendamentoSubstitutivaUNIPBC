@@ -340,128 +340,6 @@ button[onclick="fecharConsulta()"] {
   cursor: not-allowed;
   border-color: #d60000;
 }
-
-/* ===================== POPUP INICIAL ===================== */
-
-/* ===================== ESTILOS GERAIS EXISTENTES ===================== */
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 450px;
-  background: #ffffff;
-  padding: 20px;
-  margin: 30px auto;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-label {
-  margin-top: 15px;
-  display: block;
-  font-weight: bold;
-}
-
-input, select {
-  width: 100%;
-  padding: 10px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-top: 5px;
-}
-
-.btn {
-  background: #003366;
-  color: #fff;
-  padding: 12px;
-  border: none;
-  width: 100%;
-  margin-top: 15px;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-.btn-add {
-  background: #0088cc;
-}
-
-.btn-send {
-  background: #28a745;
-}
-
-/* POPUP DE CONSULTA */
-.popup {
-  position: fixed;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9998;
-}
-
-.popup.hidden {
-  display: none !important;
-}
-
-.popup-content {
-  background: #fff;
-  border-radius: 10px;
-  padding: 25px;
-  width: 90%;
-  max-width: 400px;
-}
-
-.popup-buttons {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-}
-
-.btn-close {
-  background: #dc3545;
-}
-
-/* ===================== BANNER SUPERIOR (SEMANA SUBSTITUTIVA) ===================== */
-
-.tipo-semana-banner {
-  width: 100%;
-  padding: 8px 12px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 0.95rem;
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  display: none;
-}
-
-/* Banner versão SUBSTITUTIVA */
-.tipo-semana-banner.substitutiva {
-  background: #fff3cd;
-  color: #856404;
-  border-bottom: 1px solid #ffeeba;
-}
-
-/* Banner versão REGULAR (caso queira usar futuramente) */
-.tipo-semana-banner.regular {
-  background: #e6f0ff;
-  color: #003366;
-  border-bottom: 1px solid #c2d6ff;
-}
-
 /* ===================== POPUP INICIAL ===================== */
 
 .popup-overlay {
@@ -472,22 +350,15 @@ input, select {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  opacity: 0;
-  animation: fadeInPopup 0.25s ease-out forwards;
-}
-
-@keyframes fadeInPopup {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .popup-modal {
   background: #ffffff;
-  padding: 24px 28px;
-  border-radius: 10px;
-  max-width: 420px;
+  padding: 20px 24px;
+  border-radius: 8px;
+  max-width: 400px;
   width: 90%;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
@@ -495,12 +366,12 @@ input, select {
   margin-top: 0;
   margin-bottom: 10px;
   color: #003366;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .popup-modal p {
   margin-bottom: 20px;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
 }
 
 .popup-buttons {
@@ -510,8 +381,7 @@ input, select {
 }
 
 .popup-buttons .btn {
-  flex: 1;
-  min-width: 140px;
+  width: 100%;
 }
 
 .btn-regular {
@@ -528,33 +398,3 @@ input, select {
   background-color: #28a745;
   color: #fff;
 }
-
-/* ===================== BANNER TIPO DE SEMANA ===================== */
-
-.tipo-semana-banner {
-  width: 100%;
-  padding: 8px 12px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 0.95rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-/* Versão SUBSTITUTIVA (laranjinha) */
-.tipo-semana-banner.substitutiva {
-  background: #fff3cd;
-  color: #856404;
-  border-bottom: 1px solid #ffeeba;
-}
-
-/* Versão REGULAR (azul) – se você quiser usar depois em outra página */
-.tipo-semana-banner.regular {
-  background: #e6f0ff;
-  color: #003366;
-  border-bottom: 1px solid #c2d6ff;
-}
-
-
-
