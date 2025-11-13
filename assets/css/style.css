@@ -343,23 +343,151 @@ button[onclick="fecharConsulta()"] {
 
 /* ===================== POPUP INICIAL ===================== */
 
+/* ===================== ESTILOS GERAIS EXISTENTES ===================== */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 450px;
+  background: #ffffff;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+label {
+  margin-top: 15px;
+  display: block;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.btn {
+  background: #003366;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-add {
+  background: #0088cc;
+}
+
+.btn-send {
+  background: #28a745;
+}
+
+/* POPUP DE CONSULTA */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.popup.hidden {
+  display: none !important;
+}
+
+.popup-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.popup-buttons {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-close {
+  background: #dc3545;
+}
+
+/* ===================== BANNER SUPERIOR (SEMANA SUBSTITUTIVA) ===================== */
+
+.tipo-semana-banner {
+  width: 100%;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  display: none;
+}
+
+/* Banner versão SUBSTITUTIVA */
+.tipo-semana-banner.substitutiva {
+  background: #fff3cd;
+  color: #856404;
+  border-bottom: 1px solid #ffeeba;
+}
+
+/* Banner versão REGULAR (caso queira usar futuramente) */
+.tipo-semana-banner.regular {
+  background: #e6f0ff;
+  color: #003366;
+  border-bottom: 1px solid #c2d6ff;
+}
+
+/* ===================== POPUP INICIAL REGULAR x SUBSTITUTIVA ===================== */
+
 .popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.55);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 99999;
+  opacity: 0;
+  animation: fadeInPopup 0.25s ease-out forwards;
+}
+
+@keyframes fadeInPopup {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .popup-modal {
   background: #ffffff;
-  padding: 20px 24px;
-  border-radius: 8px;
-  max-width: 400px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  max-width: 420px;
   width: 90%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   text-align: center;
 }
 
@@ -367,36 +495,90 @@ button[onclick="fecharConsulta()"] {
   margin-top: 0;
   margin-bottom: 10px;
   color: #003366;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .popup-modal p {
   margin-bottom: 20px;
-  font-size: 0.96rem;
+  font-size: 0.98rem;
 }
 
 .popup-buttons {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.popup-buttons .btn {
-  width: 100%;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .btn-regular {
   background-color: #003366;
-  color: #fff;
+  color: white;
 }
 
 .btn-substitutiva {
   background-color: #f0ad4e;
-  color: #fff;
+  color: white;
 }
 
 .btn-popup-continuar {
   background-color: #28a745;
-  color: #fff;
+  color: white;
 }
+
+/* ===================== LOADING E OUTRAS PARTES ===================== */
+
+.loading-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(255,255,255,0.85);
+  text-align: center;
+  padding-top: 120px;
+}
+
+.loading {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.progress-bar {
+  width: 80%;
+  margin: 20px auto;
+  background: #ddd;
+  height: 10px;
+  border-radius: 10px;
+}
+
+.progress {
+  height: 10px;
+  width: 0%;
+  background: #28a745;
+  border-radius: 10px;
+}
+
+.summary-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9998;
+  justify-content: center;
+  align-items: center;
+}
+
+.summary-popup .content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 350px;
+}
+
+.credits {
+  margin-top: 25px;
+  font-size: 13px;
+  text-align: center;
+  color: #444;
+}
+
 
