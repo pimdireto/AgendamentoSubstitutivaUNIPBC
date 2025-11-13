@@ -462,16 +462,16 @@ input, select {
   border-bottom: 1px solid #c2d6ff;
 }
 
-/* ===================== POPUP INICIAL REGULAR x SUBSTITUTIVA ===================== */
+/* ===================== POPUP INICIAL ===================== */
 
 .popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999;
+  z-index: 9999;
   opacity: 0;
   animation: fadeInPopup 0.25s ease-out forwards;
 }
@@ -483,11 +483,11 @@ input, select {
 
 .popup-modal {
   background: #ffffff;
-  padding: 25px 30px;
-  border-radius: 12px;
+  padding: 24px 28px;
+  border-radius: 10px;
   max-width: 420px;
   width: 90%;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
 
@@ -505,80 +505,56 @@ input, select {
 
 .popup-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.popup-buttons .btn {
+  flex: 1;
+  min-width: 140px;
 }
 
 .btn-regular {
   background-color: #003366;
-  color: white;
+  color: #fff;
 }
 
 .btn-substitutiva {
   background-color: #f0ad4e;
-  color: white;
+  color: #fff;
 }
 
 .btn-popup-continuar {
   background-color: #28a745;
-  color: white;
+  color: #fff;
 }
 
-/* ===================== LOADING E OUTRAS PARTES ===================== */
+/* ===================== BANNER TIPO DE SEMANA ===================== */
 
-.loading-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(255,255,255,0.85);
+.tipo-semana-banner {
+  width: 100%;
+  padding: 8px 12px;
   text-align: center;
-  padding-top: 120px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-.loading {
-  font-weight: bold;
-  font-size: 20px;
+/* Versão SUBSTITUTIVA (laranjinha) */
+.tipo-semana-banner.substitutiva {
+  background: #fff3cd;
+  color: #856404;
+  border-bottom: 1px solid #ffeeba;
 }
 
-.progress-bar {
-  width: 80%;
-  margin: 20px auto;
-  background: #ddd;
-  height: 10px;
-  border-radius: 10px;
+/* Versão REGULAR (azul) – se você quiser usar depois em outra página */
+.tipo-semana-banner.regular {
+  background: #e6f0ff;
+  color: #003366;
+  border-bottom: 1px solid #c2d6ff;
 }
 
-.progress {
-  height: 10px;
-  width: 0%;
-  background: #28a745;
-  border-radius: 10px;
-}
-
-.summary-popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 9998;
-  justify-content: center;
-  align-items: center;
-}
-
-.summary-popup .content {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 350px;
-}
-
-.credits {
-  margin-top: 25px;
-  font-size: 13px;
-  text-align: center;
-  color: #444;
-}
 
 
