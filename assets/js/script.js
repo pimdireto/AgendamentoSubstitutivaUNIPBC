@@ -259,6 +259,61 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Se houver função para criar grade, chame aqui
 });
 
+// ===================== POPUP INICIAL REGULAR x SUBSTITUTIVA =====================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup-inicial");
+  if (!popup) return;
+
+  const btnRegular = document.getElementById("btn-regular");
+  const btnSubstitutiva = document.getElementById("btn-substitutiva");
+  const banner = document.getElementById("tipo-semana-banner");
+  const bannerTexto = document.getElementById("tipo-semana-texto");
+
+  // Link da prova REGULAR
+  const URL_PROVA_REGULAR = "https://pimdireto.github.io/AgendamentoUNIPBC/";
+
+  // Verifica se já existe uma escolha salva
+  const escolhaSalva = localStorage.getItem("tipoSemanaAgendamento");
+
+  // Se o aluno já confirmou SUBSTITUTIVA antes, não mostra popup de novo
+  if (escolhaSalva === "substitutiva") {
+    popup.style.display = "none";
+    mostrarBanner("substitutiva");
+    return;
+  }
+
+  // Função pra mostrar o banner bonitinho
+  function mostrarBanner(tipo) {
+    if (!banner || !bannerTexto) return;
+
+    banner.style.display = "block";
+    banner.classList.remove("substitutiva", "regular");
+
+    if (tipo === "substitutiva") {
+      banner.classList.add("substitutiva");
+      bannerTexto.textContent = "Agendamentos para SEMANA SUBSTITUTIVA";
+    } else if (tipo === "regular") {
+      banner.classList.add("regular");
+      bannerTexto.textContent = "Agendamentos para SEMANA REGULAR";
+    }
+  }
+
+  // REGULAR → redireciona para a página de agendamento regular
+  btnRegular.addEventListener("click", () => {
+    // Se quiser salvar a escolha de REGULAR também, descomente:
+    // localStorage.setItem("tipoSemanaAgendamento", "regular");
+    window.location.href = URL_PROVA_REGULAR;
+  });
+
+  // SUBSTITUTIVA → fecha o popup, salva escolha e mostra banner
+  btnSubstitutiva.addEventListener("click", () => {
+    localStorage.setItem("tipoSemanaAgendamento", "substitutiva");
+    popup.style.display = "none";
+    mostrarBanner("substitutiva");
+  });
+});
+
 
 
 
