@@ -22,12 +22,12 @@ function adicionarDisciplina() {
 
 function gerarOpcoesHorarios() {
   const horarios = [
-    "24/11 Segunda-feira - Tarde", "24/11 Segunda-feira - Noite",
-    "25/11 Terça-feira - Manhã", "25/11 Terça-feira - Tarde", "25/11 Terça-feira - Noite",
-    "26/11 Quarta-feira - Manhã", "26/11 Quarta-feira - Tarde", "26/11 Quarta-feira - Noite",
-    "27/11 Quinta-feira - Manhã", "27/11 Quinta-feira - Tarde", "27/11 Quinta-feira - Noite",
-    "28/11 Sexta-feira - Manhã", "28/11 Sexta-feira - Tarde", "28/11 Sexta-feira - noite",
-    "29/11 Sábado - Manhã", "29/11 Sábado  - Tarde"
+    "01/12 Segunda-feira - Tarde", "01/12 Segunda-feira - Noite",
+    "02/12 Terça-feira - Manhã", "02/12 Terça-feira - Tarde", "02/12 Terça-feira - Noite",
+    "03/12 Quarta-feira - Manhã", "03/12 Quarta-feira - Tarde", "03/12 Quarta-feira - Noite",
+    "04/12 Quinta-feira - Manhã", "04/12 Quinta-feira - Tarde", "04/12 Quinta-feira - Noite",
+    "05/12 Sexta-feira - Manhã", "05/12 Sexta-feira - Tarde", "05/12 Sexta-feira - noite",
+    "06/12 Sábado - Manhã", "06/12 Sábado  - Tarde"
   ];
   return horarios.map(h => `<div class="schedule-option" onclick="selecionarHorario(this)">${h}</div>`).join("");
 }
@@ -258,6 +258,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await carregarHorariosLotados();
   // Se houver função para criar grade, chame aqui
 });
+
 
 
 
