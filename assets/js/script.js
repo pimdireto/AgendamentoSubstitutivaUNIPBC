@@ -93,7 +93,7 @@ function enviarFormulario() {
     }
   }, 100);
 
-  const URL_API = "https://script.google.com/macros/s/AKfycbyksH_GkQABIE8sR3MfgkYHo2QDpEdYeb1XyBigXaJPpmrdgUJetAh9RuUqABeszYFL/exec";
+  const URL_API = "https://script.google.com/macros/s/AKfycbzv-xTvykCA08jG55EaZK97bZ_YoIMeKfwKpQg1E5eDX29XEdCVEQqyBNzQvnrPgNYP/exec";
 
   fetch(`${URL_API}?ra=${ra}`)
     .then(res => res.json())
@@ -188,7 +188,7 @@ function consultarAgendamento() {
   }
 
   document.getElementById("loadingOverlay").style.display = "flex";
-  const URL_API = "https://script.google.com/macros/s/AKfycbyksH_GkQABIE8sR3MfgkYHo2QDpEdYeb1XyBigXaJPpmrdgUJetAh9RuUqABeszYFL/exec";
+  const URL_API = "https://script.google.com/macros/s/AKfycbzv-xTvykCA08jG55EaZK97bZ_YoIMeKfwKpQg1E5eDX29XEdCVEQqyBNzQvnrPgNYP/exec";
 
   fetch(`${URL_API}?ra=${ra}`)
     .then(res => res.json())
@@ -246,7 +246,7 @@ let horariosLotados = {};
 
 async function carregarHorariosLotados() {
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyksH_GkQABIE8sR3MfgkYHo2QDpEdYeb1XyBigXaJPpmrdgUJetAh9RuUqABeszYFL/exec");
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzv-xTvykCA08jG55EaZK97bZ_YoIMeKfwKpQg1E5eDX29XEdCVEQqyBNzQvnrPgNYP/exec");
     const data = await response.json();
     horariosLotados = data;
   } catch (error) {
@@ -258,6 +258,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await carregarHorariosLotados();
   // Se houver função para criar grade, chame aqui
 });
+
 
 
 
