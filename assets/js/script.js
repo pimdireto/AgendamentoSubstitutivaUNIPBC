@@ -262,22 +262,20 @@ async function carregarHorariosLotados() {
 
 // ===================== POPUP REGULAR x SUBSTITUTIVA (SITE DA SUBSTITUTIVA) =====================
 
-window.addEventListener("load", () => {
+// ===================== FUNÇÕES DO POPUP – SITE SUBSTITUTIVA =====================
+
+// REGULAR → vai para o site da PROVA REGULAR
+function irParaRegular() {
+  window.location.href = "https://pimdireto.github.io/AgendamentoUNIPBC/";
+}
+
+// SUBSTITUTIVA → apenas fecha o popup e libera a página
+function confirmarSubstitutiva() {
   const popup = document.getElementById("popup-inicial");
-  if (!popup) return;
-
-  // aqui nem precisa setar display, porque no CSS já está "flex"
-  // popup.style.display = "flex";
-
-  const btnRegular = document.getElementById("btn-regular");
-  const btnSubstitutiva = document.getElementById("btn-substitutiva");
-
-  const URL_PROVA_REGULAR = "https://pimdireto.github.io/AgendamentoUNIPBC/";
-
-  // REGULAR → ir para o site da REGULAR
-  btnRegular?.addEventListener("click", () => {
-    window.location.href = https://pimdireto.github.io/AgendamentoUNIPBC/;
-  });
+  if (popup) {
+    popup.style.display = "none";
+  }
+}
 
   // SUBSTITUTIVA → fecha o popup e libera a página
   btnSubstitutiva?.addEventListener("click", () => {
@@ -286,6 +284,7 @@ window.addEventListener("load", () => {
 });
 
 // demais coisas (carregarHorariosLotados etc.) podem ficar abaixo
+
 
 
 
