@@ -257,10 +257,10 @@ async function carregarHorariosLotados() {
     console.error("Erro ao carregar contagem de horários:", error);
   }
 }
-
-// ===================== INICIALIZAÇÃO RÁPIDA DO POPUP =====================
-
-// ===================== POPUP REGULAR x SUBSTITUTIVA (SITE DA SUBSTITUTIVA) =====================
+// Carrega horários lotados em segundo plano (se você quiser manter)
+document.addEventListener("DOMContentLoaded", () => {
+  carregarHorariosLotados();
+});
 
 // ===================== FUNÇÕES DO POPUP – SITE SUBSTITUTIVA =====================
 
@@ -277,13 +277,6 @@ function confirmarSubstitutiva() {
   }
 }
 
-  // SUBSTITUTIVA → fecha o popup e libera a página
-  btnSubstitutiva?.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-});
-
-// demais coisas (carregarHorariosLotados etc.) podem ficar abaixo
 
 
 
