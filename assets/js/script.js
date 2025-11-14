@@ -258,35 +258,36 @@ async function carregarHorariosLotados() {
   }
 }
 
-// ===================== INICIALIZAÇÃO GERAL (DOM CONTENT LOADED) =====================
+// ===================== INICIALIZAÇÃO RÁPIDA DO POPUP =====================
 
-// ===================== INICIALIZAÇÃO GERAL (DOM CONTENT LOADED) =====================
-
-document.addEventListener("DOMContentLoaded", async () => {
-  // 1) Carrega contagem de horários (se você quiser usar depois para bloquear lotados)
-  await carregarHorariosLotados();
-
-  // 2) Lógica do POPUP REGULAR x SUBSTITUTIVA (SEM BANNER, SEM LOCALSTORAGE)
+// Mostrar o popup logo após a página carregar (sem esperar fetch)
+window.addEventListener("load", () => {
   const popup = document.getElementById("popup-inicial");
-  if (!popup) return;
+  if (popup) {
+    popup.style.display = "flex";
+  }
 
   const btnRegular = document.getElementById("btn-regular");
   const btnSubstitutiva = document.getElementById("btn-substitutiva");
 
-  // Link da prova REGULAR
   const URL_PROVA_REGULAR = "https://pimdireto.github.io/AgendamentoUNIPBC/";
 
-  // Sempre mostrar o popup ao carregar a página
-  popup.style.display = "flex";
-
-  // REGULAR → redireciona para a página de agendamento regular
-  btnRegular.addEventListener("click", () => {
+  // Botão REGULAR
+  btnRegular?.addEventListener("click", () => {
     window.location.href = URL_PROVA_REGULAR;
   });
 
-  // SUBSTITUTIVA → fecha o popup e segue normalmente na página
-  btnSubstitutiva.addEventListener("click", () => {
-    popup.style.display = "none";
+  // Botão SUBSTITUTIVA
+  btnSubstitutiva?.addEventListener("click", () => {
+    document.getElementById("popup-inicial").style.display = "none";
   });
 });
+
+// ===================== CARREGAMENTOS SECUNDÁRIOS =====================
+
+document.addEventListener("DOMContentLoaded", async () => {
+  // Carregar horários lotados em segundo plano
+  carregarHorariosLotados();
+});
+
 
