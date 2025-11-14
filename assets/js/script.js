@@ -272,22 +272,20 @@ window.addEventListener("load", () => {
 
   const URL_PROVA_REGULAR = "https://pimdireto.github.io/AgendamentoUNIPBC/";
 
-  // Botão REGULAR
-  btnRegular?.addEventListener("click", () => {
-    window.location.href = URL_PROVA_REGULAR;
-  });
-
-  // Botão SUBSTITUTIVA
-  btnSubstitutiva?.addEventListener("click", () => {
-    document.getElementById("popup-inicial").style.display = "none";
-  });
+ // Botão REGULAR
+btnRegular?.addEventListener("click", () => {
+  // opcional: destrava antes de ir embora
+  document.body.classList.remove("bloqueado");
+  window.location.href = URL_PROVA_REGULAR;
 });
 
-// ===================== CARREGAMENTOS SECUNDÁRIOS =====================
-
-document.addEventListener("DOMContentLoaded", async () => {
-  // Carregar horários lotados em segundo plano
-  carregarHorariosLotados();
+// Botão SUBSTITUTIVA
+btnSubstitutiva?.addEventListener("click", () => {
+  document.getElementById("popup-inicial").style.display = "none";
+  // destrava a página para o aluno preencher o formulário
+  document.body.classList.remove("bloqueado");
 });
+
+
 
 
