@@ -458,3 +458,14 @@ button[onclick="fecharConsulta()"] {
   color: #fff;
 }
 
+/* Quando o body estiver bloqueado, nada da .container recebe clique */
+body.bloqueado .container {
+  pointer-events: none;
+  filter: blur(1px);     /* opcional, só pra dar sensação de "desativado" */
+}
+
+/* Cursor de "não permitido" enquanto está bloqueado (opcional) */
+body.bloqueado {
+  cursor: not-allowed;
+}
+
