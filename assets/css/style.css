@@ -402,15 +402,12 @@ button[onclick="fecharConsulta()"] {
 /* POPUP INICIAL REGULAR x SUBSTITUTIVA – SUBSTITUTIVA */
 .popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);  /* fundo escuro */
-  display: flex;                    /* já aparece assim que o HTML carregar */
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;              /* popup aparece assim que HTML carrega */
   align-items: center;
   justify-content: center;
-  z-index: 10000;                   /* bem acima de tudo */
+  z-index: 10000;
 }
 
 .popup-modal {
@@ -421,18 +418,6 @@ button[onclick="fecharConsulta()"] {
   width: 90%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
-}
-
-.popup-modal h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: #003366;
-  font-size: 1.2rem;
-}
-
-.popup-modal p {
-  margin-bottom: 20px;
-  font-size: 0.96rem;
 }
 
 .popup-buttons {
@@ -454,5 +439,7 @@ button[onclick="fecharConsulta()"] {
   background-color: #f0ad4e;
   color: #fff;
 }
+
+
 
 
