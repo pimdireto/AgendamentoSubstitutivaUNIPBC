@@ -276,7 +276,7 @@ window.addEventListener("load", () => {
 
   // REGULAR → ir para o site da REGULAR
   btnRegular?.addEventListener("click", () => {
-    window.location.href = URL_PROVA_REGULAR;
+    window.location.href = https://pimdireto.github.io/AgendamentoUNIPBC/;
   });
 
   // SUBSTITUTIVA → fecha o popup e libera a página
@@ -286,6 +286,7 @@ window.addEventListener("load", () => {
 });
 
 // demais coisas (carregarHorariosLotados etc.) podem ficar abaixo
+
 
 
 
