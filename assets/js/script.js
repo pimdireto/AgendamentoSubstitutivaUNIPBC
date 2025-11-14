@@ -260,31 +260,34 @@ async function carregarHorariosLotados() {
 
 // ===================== INICIALIZAÇÃO RÁPIDA DO POPUP =====================
 
-// Mostrar o popup logo após a página carregar (sem esperar fetch)
+// ===================== POPUP REGULAR x SUBSTITUTIVA (SITE DA SUBSTITUTIVA) =====================
+
 window.addEventListener("load", () => {
   const popup = document.getElementById("popup-inicial");
-  if (popup) {
-    popup.style.display = "flex";
-  }
+  if (!popup) return;
+
+  // aqui nem precisa setar display, porque no CSS já está "flex"
+  // popup.style.display = "flex";
 
   const btnRegular = document.getElementById("btn-regular");
   const btnSubstitutiva = document.getElementById("btn-substitutiva");
 
   const URL_PROVA_REGULAR = "https://pimdireto.github.io/AgendamentoUNIPBC/";
 
- // Botão REGULAR
-btnRegular?.addEventListener("click", () => {
-  // opcional: destrava antes de ir embora
-  document.body.classList.remove("bloqueado");
-  window.location.href = URL_PROVA_REGULAR;
+  // REGULAR → ir para o site da REGULAR
+  btnRegular?.addEventListener("click", () => {
+    window.location.href = URL_PROVA_REGULAR;
+  });
+
+  // SUBSTITUTIVA → fecha o popup e libera a página
+  btnSubstitutiva?.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
 });
 
-// Botão SUBSTITUTIVA
-btnSubstitutiva?.addEventListener("click", () => {
-  document.getElementById("popup-inicial").style.display = "none";
-  // destrava a página para o aluno preencher o formulário
-  document.body.classList.remove("bloqueado");
-});
+// demais coisas (carregarHorariosLotados etc.) podem ficar abaixo
+
+
 
 
 
