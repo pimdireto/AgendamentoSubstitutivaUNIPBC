@@ -399,16 +399,18 @@ button[onclick="fecharConsulta()"] {
   border-bottom: 1px solid #c2d6ff;
 }
 
-/* ===================== POPUP INICIAL REGULAR x SUBSTITUTIVA ===================== */
-
+/* POPUP INICIAL REGULAR x SUBSTITUTIVA – SUBSTITUTIVA */
 .popup-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;              /* << AQUI: começa escondido */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);  /* fundo escuro */
+  display: flex;                    /* já aparece assim que o HTML carregar */
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 10000;                   /* bem acima de tudo */
 }
 
 .popup-modal {
@@ -453,19 +455,4 @@ button[onclick="fecharConsulta()"] {
   color: #fff;
 }
 
-.btn-popup-continuar {
-  background-color: #28a745;
-  color: #fff;
-}
-
-/* Quando o body estiver bloqueado, nada da .container recebe clique */
-body.bloqueado .container {
-  pointer-events: none;
-  filter: blur(1px);     /* opcional, só pra dar sensação de "desativado" */
-}
-
-/* Cursor de "não permitido" enquanto está bloqueado (opcional) */
-body.bloqueado {
-  cursor: not-allowed;
-}
 
