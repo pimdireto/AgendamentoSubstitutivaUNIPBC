@@ -260,59 +260,33 @@ async function carregarHorariosLotados() {
 
 // ===================== INICIALIZAÇÃO GERAL (DOM CONTENT LOADED) =====================
 
+// ===================== INICIALIZAÇÃO GERAL (DOM CONTENT LOADED) =====================
+
 document.addEventListener("DOMContentLoaded", async () => {
   // 1) Carrega contagem de horários (se você quiser usar depois para bloquear lotados)
   await carregarHorariosLotados();
 
-  // 2) Lógica do POPUP REGULAR x SUBSTITUTIVA + BANNER
+  // 2) Lógica do POPUP REGULAR x SUBSTITUTIVA (SEM BANNER, SEM LOCALSTORAGE)
   const popup = document.getElementById("popup-inicial");
   if (!popup) return;
 
   const btnRegular = document.getElementById("btn-regular");
   const btnSubstitutiva = document.getElementById("btn-substitutiva");
-  const banner = document.getElementById("tipo-semana-banner");
-  const bannerTexto = document.getElementById("tipo-semana-texto");
 
   // Link da prova REGULAR
   const URL_PROVA_REGULAR = "https://pimdireto.github.io/AgendamentoUNIPBC/";
 
-  // Função pra mostrar o banner bonitinho
-  function mostrarBanner(tipo) {
-    if (!banner || !bannerTexto) return;
-
-    banner.style.display = "block";
-    banner.classList.remove("substitutiva", "regular");
-
-    if (tipo === "substitutiva") {
-      banner.classList.add("substitutiva");
-      bannerTexto.textContent = "Agendamentos para SEMANA SUBSTITUTIVA";
-    } else if (tipo === "regular") {
-      banner.classList.add("regular");
-      bannerTexto.textContent = "Agendamentos para SEMANA REGULAR";
-    }
-  }
-
- // Verifica se já existe uma escolha salva
-const escolhaSalva = localStorage.getItem("tipoSemanaAgendamento");
-
-if (escolhaSalva === "substitutiva") {
-  // Já escolheu SUBSTITUTIVA antes → não mostra popup, só o banner
-  mostrarBanner("substitutiva");
-} else {
-  // Primeira vez (ou sem escolha salva) → mostra o popup
+  // Sempre mostrar o popup ao carregar a página
   popup.style.display = "flex";
-}
 
   // REGULAR → redireciona para a página de agendamento regular
   btnRegular.addEventListener("click", () => {
     window.location.href = URL_PROVA_REGULAR;
   });
 
-  // SUBSTITUTIVA → fecha o popup, salva escolha e mostra banner
+  // SUBSTITUTIVA → fecha o popup e segue normalmente na página
   btnSubstitutiva.addEventListener("click", () => {
-    localStorage.setItem("tipoSemanaAgendamento", "substitutiva");
     popup.style.display = "none";
-    mostrarBanner("substitutiva");
   });
 });
 
